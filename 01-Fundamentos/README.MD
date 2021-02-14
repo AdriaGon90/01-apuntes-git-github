@@ -1,6 +1,16 @@
 # PRIMEROS COMANDOS DE GIT
 
-## INTRODUCCIÓN
+## CONCEPTOS BÁSICOS Y COMANDOS DE AYUDA
+
+Para entender cómo funciona `git` debemos comprender algunos conceptos básicos que se utilizan en el flujo de trabajo de `git`:
+
+* ***Stage***: conocido como el *escenario*, que es el estado en el que se ponen los archivos que están listos para agregarlos a la línea del tiempo a través del `commit`.
+
+* ***Commit***: Es el momento en el que se crea el registro histórico (snaptshot o fotografía) de los archivos agregados al stage (escenario) con todos los cambios que sucedieron en ese preciso momento.
+
+* ***Status***: Lista de archivos que participaron o sufrieron cambios desde el último `commit` a la fecha.
+
+* ***HEAD***: Se refiere al último `commit` en la rama actual o la línea del tiempo en la cual estamos trabajando.
 
 Desde terminal de `git`, introduciremos el primer comando para visualizar la versión de git con la que nos encontramos trabajando:
 
@@ -16,7 +26,7 @@ Si deseamos conocer mas a detalle un comando en particular:
 
 **NOTA:** Cuando en la consola o termina se muestra mucha información por algún comando que fue ejecutado, al final suele mostrar dos puntos `:` esto significa que hay mas información que mostrar, para salir podemos presionar la tecla `q`, y si queremos seguir visualizando mas información presionamos la tecla `enter`.
 
-### CONFIGURACIÓN INICIAL
+## CONFIGURACIÓN INICIAL
 
 Antes de empezar a trabajar con `git`, es importante especificar nuestra identidad (usuario y correo) en la configuración global, para ello, usamos los siguientes comandos:
 
@@ -36,13 +46,15 @@ Para visualizar en forma de lista toda la configuración **completa** implementa
 
 > git config -l
 
-### COMANDOS BÁSICOS
+## COMANDOS BÁSICOS
 
 Para inicializar un repositorio, en la terminal de `git`, debemos pocisionarnos en la carpeta donde inicializaremos dicho repositorio y ejecutamos el comando:
 
 > git init
 
 Esto nos creará una carpeta `.git`. Esta carpeta contiene toda la configuración de `git` de nuestro repositorio.
+
+Si deseamos eliminar `git` de nuestro repositorio bastará únicamente con eliminar la carpeta `.git`.
 
 Para visualizar los archivos de un repositorio que han sido agregados, modificados o eliminados ejecutamos el comando:
 
@@ -75,9 +87,9 @@ Para visualizar toda la historia de los `commit` registrados en el repositorio, 
 
 Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo.
 
-## COMANDOS ADICIONALES
+### COMANDOS ADICIONALES
 
-### DIFERENTES FORMAS DE AGREGAR ARCHIVOS AL ESCENARIO
+#### DIFERENTES FORMAS DE AGREGAR ARCHIVOS AL ESCENARIO
 
 * Suponiendo que tenemos una serie de archivos donde hemos realizado cambios dentro de un repositorio en `git`, pero que no han sido agregados al escenario y deseamos agregarlos para que `git` pueda darles segumiento y realizar el `commit` correspondiente, tomando en cuenta que no queremos agregar todos, sino sólo unos archivos en específico.
 
@@ -141,3 +153,111 @@ Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo
     * Para agregar todos los archivos que se encuentran dentro de una carpeta `folder` sin excepción
 
         > git add `folder/`
+
+#### DIFERENTES FORMAS DE REVISAR EL `LOG` Y LOS CAMBIOS DEL ÚLTIMO `COMMIT`
+
+Para revisar el `log` de la forma común, ejecutamos el comando
+
+> git log
+
+Una forma mas resumida de visualizar la información del `log`:
+
+> git log --oneline
+
+Otra forma de visualizar la misma información pero con gráficos de la línea de tiempo:
+
+> git log --oneline --decorate --all --graph
+
+#### ALIAS PARA COMANDOS
+
+`Git` nos ofrece una larga lista de comandos que nos son sumamente útiles, pero muchos de ellos pueden ser demasiados largos al momento de teclearlos en la consola. Para ello, `git` nos ofrece una herramienta que nos permite crear *alias* para los comandos, permitiendonos invocar comandos largos con pocas letras.
+
+Para crear un alias de un comando:
+
+> git config --global alias.`nombre` "`comando con parámetros`"
+
+Esto nos permite invocar el comando con el alias que le asignemos:
+
+> git `nombre`
+
+Por ejemplo, para crear el alias de nombre `lg` del comando `git log --oneline --decorate --all --graph`:
+
+> git config --global alias.lg "log --oneline --decorate --all --graph"
+
+podemos invocarlo con:
+
+> git lg
+
+Otro comando útil sería `git status -s -b`, podemos crear un alias de nombre `s`:
+
+> git config --global alias.s "status -s -b"
+
+podemos invocarlo con:
+
+> git s
+
+## CUESTIONARIO DE APRENDIZAJE DE COMANDOS BÁSICOS
+
+1. Cuando utilizamos Git, ¿Todos los miembros del equipo tienen una copia del repositorio cental?
+
+    > A
+
+    A) Verdadero
+
+    B) Falso
+
+2. ¿Un commit en Git, es como una fotografía del proyecto en ese momento?
+
+    > A
+
+    A) Verdadero
+
+    B) Falso
+
+3. ¿Para qué sirve el comando `git init`?
+
+    > B
+
+    A) Para configurar nuestro usuario y contraseña
+
+    B) Para inicializar el repositorio
+    
+    C) Para iniciar el seguimiento de los archivos
+
+4. Localmente, ¿Dónde se encuentra la carpeta que permite controlar todo nuestro repositorio de git?
+
+    > C
+
+    A) En la carpeta git
+
+    B) En la carpeta git-config
+
+    C) En la carpeta .git
+
+5. Si queremos eliminar git de nuestro repositorio, ¿qué debemos hacer?
+
+    > A
+
+    A) Borrar la carpeta .git
+
+    B) Ejecutar el comando git destroy
+
+    C) Copial el folder a otro directorio
+
+6. ¿Qué es el stage o el escenario?
+
+    > C
+
+    A) Un lugar donde se muestra toda la información del commit
+
+    B) El lugar donde podemos ver todos los archivos de nuestro repositorio
+
+    C) Es un lugar donde podemos confirmar los archivos y carpetas que conformarán el commit
+
+7. El comando `git s`, ¿Es propio de Git?
+
+    > B
+
+    A) Verdadero
+
+    B) Falso
