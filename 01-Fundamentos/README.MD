@@ -1,4 +1,4 @@
-# PRIMEROS COMANDOS DE GIT
+# INTRODUCCIÓN A GIT
 
 ## CONCEPTOS BÁSICOS Y COMANDOS DE AYUDA
 
@@ -30,9 +30,9 @@ Si deseamos conocer mas a detalle un comando en particular:
 
 Antes de empezar a trabajar con `git`, es importante especificar nuestra identidad (usuario y correo) en la configuración global, para ello, usamos los siguientes comandos:
 
-> git config --global user.name "Mi nombre"
+> git config --global user.name "`Mi nombre`"
 
-> git config --global user.email "micorreo@correo.com"
+> git config --global user.email "`micorreo@correo.com`"
 
 Para visualizar la configuración global implementada en `git` desde un editor de texto en la terminal, ejecutamos el comando:
 
@@ -73,11 +73,11 @@ Esto es indicarle a `git` que prepare nuestros archivos y lo mande al stage (o e
 
 Para tomar un snapshoot o fotografía del código y registrarlo en la línea del tiempo en `git`, ejecutamos el comando:
 
-> git commit -m "Tu mensaje"
+> git commit -m "`Tu mensaje`"
 
 Con eso `git` crea un registro histórico de los cambios que sucedieron en los archivos que se encontraron en el stage.
 
-Si realizamos cambios en un archivo y guardamos y cerramos o, inclusive si eliminamos accidentalmente, podemos restaurar al último `commit` ese archivo con el comando:
+Si realizamos cambios en uno o varios archivos y guardamos y cerramos o, inclusive si eliminamos accidentalmente varios archivos, podemos restaurar al último `commit` todos los archivos con el comando:
 
 > git checkout -- .
 
@@ -144,7 +144,7 @@ Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo
 
     * Para agregar una lista de archivos
 
-        > git add <`lista de archvivos`>
+        > git add `lista de archvivos ...`
 
     * Para agregar todos los archivos con una extensión `ext` en particular que se encuentran dentro de una carpeta `folder`
 
@@ -153,6 +153,10 @@ Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo
     * Para agregar todos los archivos que se encuentran dentro de una carpeta `folder` sin excepción
 
         > git add `folder/`
+
+    * Si deseamos agregar todos los archivos al `staged` y hacer `commit` al mismo tiempo, ejecutamos el comando
+
+        > git commit -am "`Tu mensaje`"
 
 #### DIFERENTES FORMAS DE REVISAR EL `LOG` Y LOS CAMBIOS DEL ÚLTIMO `COMMIT`
 
@@ -182,7 +186,7 @@ Esto nos permite invocar el comando con el alias que le asignemos:
 
 Por ejemplo, para crear el alias de nombre `lg` del comando `git log --oneline --decorate --all --graph`:
 
-> git config --global alias.lg "log --oneline --decorate --all --graph"
+> git config --global alias.lg "log --oneline --decorate --all --graph
 
 podemos invocarlo con:
 
@@ -190,7 +194,7 @@ podemos invocarlo con:
 
 Otro comando útil sería `git status -s -b`, podemos crear un alias de nombre `s`:
 
-> git config --global alias.s "status -s -b"
+> git config --global alias.s "status -s -b
 
 podemos invocarlo con:
 
@@ -200,64 +204,234 @@ podemos invocarlo con:
 
 1. Cuando utilizamos Git, ¿Todos los miembros del equipo tienen una copia del repositorio cental?
 
-    > A
+    - [x] A) Verdadero
 
-    A) Verdadero
-
-    B) Falso
+    - [ ] B) Falso
 
 2. ¿Un commit en Git, es como una fotografía del proyecto en ese momento?
 
-    > A
+    - [x] A) Verdadero
 
-    A) Verdadero
-
-    B) Falso
+    - [ ] B) Falso
 
 3. ¿Para qué sirve el comando `git init`?
 
-    > B
+    - [ ] A) Para configurar nuestro usuario y contraseña
 
-    A) Para configurar nuestro usuario y contraseña
-
-    B) Para inicializar el repositorio
+    - [x] B) Para inicializar el repositorio
     
-    C) Para iniciar el seguimiento de los archivos
+    - [ ] C) Para iniciar el seguimiento de los archivos
 
 4. Localmente, ¿Dónde se encuentra la carpeta que permite controlar todo nuestro repositorio de git?
 
-    > C
+    - [ ] A) En la carpeta git
 
-    A) En la carpeta git
+    - [ ] B) En la carpeta git-config
 
-    B) En la carpeta git-config
-
-    C) En la carpeta .git
+    - [x] C) En la carpeta .git
 
 5. Si queremos eliminar git de nuestro repositorio, ¿qué debemos hacer?
 
-    > A
+    - [x] A) Borrar la carpeta .git
 
-    A) Borrar la carpeta .git
+    - [ ] B) Ejecutar el comando git destroy
 
-    B) Ejecutar el comando git destroy
-
-    C) Copial el folder a otro directorio
+    - [ ] C) Copial el folder a otro directorio
 
 6. ¿Qué es el stage o el escenario?
 
-    > C
+    - [ ] A) Un lugar donde se muestra toda la información del commit
 
-    A) Un lugar donde se muestra toda la información del commit
+    - [ ] B) El lugar donde podemos ver todos los archivos de nuestro repositorio
 
-    B) El lugar donde podemos ver todos los archivos de nuestro repositorio
-
-    C) Es un lugar donde podemos confirmar los archivos y carpetas que conformarán el commit
+    - [x] C) Es un lugar donde podemos confirmar los archivos y carpetas que conformarán el commit
 
 7. El comando `git s`, ¿Es propio de Git?
 
-    > B
+    - [ ] A) Verdadero
 
-    A) Verdadero
+    - [x] B) Falso
 
-    B) Falso
+# ACCIONES AVANZADAS EN `GIT`
+
+## DIFERENCIAS ENTRE COMMITS Y RESTAURACIÓN DE ARCHIVOS
+
+Cuando realizamos cambios en uno o varios archivos y deseamos visualizar las diferencias de los cambios con respecto al último `commit`, ejecutamos el comando
+
+> git diff
+
+Este comando nos mostrará las diferencias de cambios de archivos que no están en el `staged`.
+
+Si agregamos uno o varios archivos al `staged`, al ejecutar el comando `diff` no nos mostrará las diferencias de esos archivos; para visualizar la diferencia de cambios de los archivos agregados al `staged` ejecutamos el comando:
+
+> git diff --staged
+
+Si deseamos quitar uno o varios archivos del `staged`,  ejecutamos el comando:
+
+> git reset HEAD `path/filename.ext`
+
+Si deseamos restaurar los cambios que hemos realizado en todos los archivos, ejecutamos el comando
+
+> git checkout -- .
+
+Si deseamos resturar los cambios efectuados en un archivo en específico al último `commit`, ejecutamos el comando:
+
+> git checkout -- `path/file.ext`
+
+## ACTUALIZAR MENSAJE DEL `COMMIT` Y REVERTIR `COMMIT`
+
+Si deseamos cambiar el mensaje del último `commit` ejecutado, tecleamos el comando:
+
+> git commit --amend -m "`Tu mensaje`"
+
+Si se nos presenta la situación en la que olvidamos agregar cambios a uno o varios archivos (o incluso omitirlos) al último `commit` y estos cambios deben estar ligados a ese `commit`, podemos realizar lo siguiente:
+
+1. Ejecutamos el comando para deshacer el último `commit`:
+
+    > git reset --soft HEAD^
+
+2. Realizamos las modificaciones que nos faltan, incluso ya sea que agregemos nuevos archivos, eliminemos u omitamos algunos.
+
+3. Ejecutamos el comando:
+
+    > git commit -am "`Tu mensaje`"
+
+*NOTA*: si vamos a agregar todos los cambios al `staged` ejecutamos el comando anterior, pero si agregaremos ciertos archivos, agregamos con el comando `add` y posteriormente `commit`.
+
+Para agregar un mensaje en el `commit` de múltiples líneas realizamos lo siguiente:
+
+1. Ejecutamos el comando
+
+    > git commit
+
+2. Esto nos abrirá un editor de texto en la consola, pulsamos la tecla `A` para editar
+
+3. Escribimos el mensaje que deseamos, para agregar una nueva línea pulsamos la tecla `ENTER`.
+
+4. Cuando hayamos terminado de escribir el mensaje, pulsamos la tecla `ESC` para salir del editor.
+
+5. Pulsamos la tecla dos puntos `:` posteriormente las teclas `W` para escribir y `Q` para salir y finalmente pulsamos la tecla `ENTER`.
+
+## VIAJANDO EN EL TIEMPO EN EL REPOSITORIO
+
+### VIAJES EN EL TIEMPO, RESETS Y REFLOG
+
+`Git` nos permite regresar a un punto en el tiempo para realizar cambios en un `commit` determinado. Para ello:
+
+1. Ejecutamos el comando 
+
+    > git log --oneline --decorate --all --graph
+
+2. Obtenemos el id del `commit` al que deseamos regresar
+
+3. Ejecutamos el comando:
+
+    > git reset --soft `idcommit`
+
+    ó
+    
+    > git reset --mixed `idcommit`
+
+    Esto nos regresará a un `commit` en específico, pero los cambios realizados en los `commit` superiores no se perderán, simplemente que los archivos cambiados ya no estarán en el `staged`.
+
+    Si queremos definir este `commit` en el que nos posicionamos sea el nuevo `HEAD`, descartando todos los cambios que sucedieron en los `commit` superiores, ejecutamos el comando:
+
+    > git reset --hard `idcommit`
+
+    *NOTA IMPORTANTE*: este comando nos borrará todos los cambios que sucedieron de este `commit` para arriba.
+
+    Si deseamos regresar a un `commit` que se encontraba despues del `commit` del que regresamos, debemos obtener el id del `commit` al que deseamos regresar, ya que no lo visualizaremos en el `log`, para ello ejecutamos el comando:
+
+    > git reflog
+
+    y ejecutar el comando `--hard`
+
+### CAMBIAR EL NOMBRE Y ELIMINAR ARCHIVOS MEDIANTE `GIT`
+
+Si bien el cambio de nombre o eliminación de archivos se puede realizar mediante la interfaz del explorador de archivos, pero hacerlo mediante `git` tenemos la ventaja de mantener toda la historia de cambios que ese archivo a tenido en el repositorio.
+
+Para cambiar nombre de archivo mediante la consola de `git`, usamos el siguiente comando:
+
+> git mv `path/finename.ext` `path/newfilename.ext`
+
+Inmediatamente en el `status` podemos visualizar que el archivo afectado se encuentra en el `staged` pero con la inicial `R` de *renombred*, y con eso podemos ejecutar el `commit` para registrar ese nuevo cambio.
+
+Para eliminar un archivo utilizando la consola de `git` ejecutamos el comando:
+
+> git rm path/`filename.ext`
+
+Inmediatamente en el `status`, podemos visualizar que el archivo afectado se encuentra en el `staged` pero con la inicial `D` de *deleted*, y con eso podemos ejecutar el `commit` para registrar en la historia ese nuevo cambio.
+
+### CAMBIAR EL NOMBRE Y ELIMINAR ARCHIVOS FUERA DE `GIT` (DESDE EL EXPLORADOR DE ARCHVOS)
+
+Al realizar cambio de nombre desde el explorador de archivos, `git` lo interpreta como una eliminación y creación (con el nuevo nombre) de un nuevo archivo, por lo que al ejecutar el `status`, ese archivo ya no estará en el `staged` ya que tendrá dos estados, eliminación y creación, por lo que se tienen que ejecutar los siguientes comandos:
+
+> git add -u
+
+> git add -A
+
+Y posteriormente realizar el `commit`.
+
+Para el caso de la elimiación (desde el explorador de archivos, por supuesto), `git` reconoce la acción realizada, pero el archivo dejará de estar en el `staged`, por lo que tendremos que agregarlo y realizar el `commit`.
+
+### IGNORAR ARCHIVOS
+
+Para indicarle a `git` el o los archivos que deseamos que ignore (que no queremos versionar), se debe crear un archivo llamado `.gitignore` (se recomienda que se cree en la raíz del repositorio, ya que ponerlo en un directorio en particular, implica que ese archivo abrá que crearlo en cada directorio en particular), en cada línea de ese archivo se declara una expresión de los archivos a ignorar. Por ejemplo, si deseamos igorar un archivo en particular:
+
+* path/filename.ext
+
+Si deseamos ignorar archivos con una extensión en particular:
+
+* *.ext
+
+Si deseamos ignorar un directorio (implica ignorar todos los archivos que se encuentran dentro de él)
+
+* directory/
+
+### TAREA PRÁCTICA #1
+
+Siga las instrucciones indicadas.
+
+1. Cree una carpeta junto a a los demás ejercicios del proyecto llamada `demo-05-tarea`
+
+2. Dentro de esa carpeta, inicialice el proyecto de git
+
+3. Dentro del repositorio cree un archivo llamado `README.md`, ingrese el siguiente contenido:
+
+        # Información
+        Este es el resultado de mi esfuerzo aprendiendo GIT
+
+4. 
+
+* Agregue el `README.md` al stage o escenario
+* Realice el primer commit con el mensaje `Creación del readme`
+
+5. 
+
+* Cree una carpeta dentro del proyecto llamada `logs`
+* Dentro de la carpeta logs, cree un archivo llamado `hoy.log`
+* Crear otro archivo llamado `historia.log`
+
+6. Agregue únicamente el archivo `hoy.log` al stage
+
+7. Realice el segundo commit con el archivo `hoy.log`, y en el mensaje coloque "Creamos el archivo hoy.log"
+
+8. 
+
+* Vamos a crear ahora el archivo `.gitignore`
+* Ignoremos completamente el archivo `historia.log`
+
+9. 
+
+* Agregue al stage el archivo `.gitignore`
+* Realice un commit unicamente con el archivo .gitignore
+
+10. 
+
+* Borre la carpeta LOGS
+* Borre el archivo .gitignore
+* El único archivo que debe de quedar, es el README.md
+
+11. Reconstruir todo lo borrado con un único comando. (El archivo historia.log debe de aparecer)
+
+12. ¿Por qué el archivo historia.log no apareció? Debe de ser capaz de analizar el por qué
