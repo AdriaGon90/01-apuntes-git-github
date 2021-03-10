@@ -6,3 +6,4 @@
 4. Necesitamos más comida
 5. Necesitamos investigar los trabajos del enemigo
 6. Necesitamos armar un nuevo plan
+7. Necesitamos detener a DoomsDay
