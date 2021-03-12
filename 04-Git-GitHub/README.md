@@ -35,3 +35,8 @@ Detallaremos cada palabra que conforman este comando:
 * master: es el nombre de la rama a la que deseamos enviar al repositorio.
 
 * -u: nos ayuda a que la próxima vez que deseemos hacer un push no necesitamos especificar la rama, ya que de este modo, se está estableciendo la rama master por defecto para integrar los cambios.
+
+Si en nuestro **`repositorio local`** tenemos `tag`, pero no se reflejan en el **`repositorio remoto`**, ejecutamos el comando:
+
+> git push --tag
+

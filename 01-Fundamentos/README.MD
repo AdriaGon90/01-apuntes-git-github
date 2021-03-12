@@ -4,13 +4,15 @@
 
 Para entender cómo funciona `git` debemos comprender algunos conceptos básicos que se utilizan en el flujo de trabajo de `git`:
 
-* ***Stage***: conocido como el *escenario*, que es el estado en el que se ponen los archivos que están listos para agregarlos a la línea del tiempo a través del `commit`.
+* ***Staged***: conocido como el *escenario*, que es el estado en el que se ponen los archivos que están listos para agregarlos a la línea del tiempo a través del `commit`.
 
-* ***Commit***: Es el momento en el que se crea el registro histórico (snaptshot o fotografía) de los archivos agregados al stage (escenario) con todos los cambios que sucedieron en ese preciso momento.
+* ***Commit***: Es el momento en el que se crea el registro histórico (snaptshot o fotografía) de los archivos agregados al `staged` (escenario) con todos los cambios que sucedieron en ese preciso momento.
 
 * ***Status***: Lista de archivos que participaron o sufrieron cambios desde el último `commit` a la fecha.
 
-* ***HEAD***: Se refiere al último `commit` en la rama actual o la línea del tiempo en la cual estamos trabajando.
+* ***HEAD***: Se refiere al `commit` en el que está tu repositorio posicionado en cada momento. Por regla general `HEAD` suele coincidir con el último `commit` de la rama en la que estés, ya que habitualmente estás trabajando en lo último.
+
+* ***Log***: Historial de `commit` realizados en el repositorio.
 
 Desde terminal de `git`, introduciremos el primer comando para visualizar la versión de git con la que nos encontramos trabajando:
 
@@ -62,20 +64,20 @@ Para visualizar los archivos de un repositorio que han sido agregados, modificad
 
 Este comando nos muestra una lista de archivos que han sufrido alguna modificación, señalando en colores rojo y verde aquellos:
 
-* *rojo*: archivos que participaron en alguna modificación o que recibieron algún cambio desde el último `commit` a la fecha pero que no han sido agregados al escenario (stage).
-* *verde*: son aquellos archivos modificados que fueron agregados al escenario (stage), y son estos archivos los que están listos para enviarlos al `commit`.
+* *rojo*: archivos que participaron en alguna modificación o que recibieron algún cambio desde el último `commit` a la fecha pero que no han sido agregados al escenario (staged).
+* *verde*: son aquellos archivos modificados que fueron agregados al escenario (staged), y son estos archivos los que están listos para enviarlos al `commit`.
 
 Para agregar todos los archivos y que `git` esté pendiente de los cambios que realizamos en ellos, ejecutamos el comando:
 
 > git add .
 
-Esto es indicarle a `git` que prepare nuestros archivos y lo mande al stage (o escenario).
+Esto es indicarle a `git` que prepare nuestros archivos y lo mande al `staged` (o escenario).
 
 Para tomar un snapshoot o fotografía del código y registrarlo en la línea del tiempo en `git`, ejecutamos el comando:
 
 > git commit -m "`Tu mensaje`"
 
-Con eso `git` crea un registro histórico de los cambios que sucedieron en los archivos que se encontraron en el stage.
+Con eso `git` crea un registro histórico de los cambios que sucedieron en los archivos que se encontraron en el `staged`.
 
 Si realizamos cambios en uno o varios archivos y guardamos y cerramos o, inclusive si eliminamos accidentalmente varios archivos, podemos restaurar al último `commit` todos los archivos con el comando:
 
@@ -103,7 +105,7 @@ Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo
 
     Ejecutamos nuevamente el comando `git status` y no veremos archivos en el escenario (señalados en color verde).
 
-* Suponiendo que ahora deseamos agregar al escenario (stage) y enviar al `commit` todos los archivos con una extensión en particular, para ello ejecutamos el comando 
+* Suponiendo que ahora deseamos agregar al escenario (staged) y enviar al `commit` todos los archivos con una extensión en particular, para ello ejecutamos el comando 
 
     > git add *.`ext`
 
@@ -119,13 +121,13 @@ Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo
 
     > git add -A
 
-    para agregar todos los archivos al stage, y quitamos del stage aquel o aquellos archivos con extensión en particular que deseamos omitir, con el comando:
+    para agregar todos los archivos al `staged`, y quitamos del `staged` aquel o aquellos archivos con extensión en particular que deseamos omitir, con el comando:
 
     > git reset *.`ext`
 
     Procedemos a ejecutar el `commit`.
 
-* Otras formas de agregar al stage
+* Otras formas de agregar al `staged`
 
     * Para agregar todos los archivos con una extension `ext` en particular del TODO el repositorio
         > git add "*.`ext`"
@@ -238,7 +240,7 @@ podemos invocarlo con:
 
     - [ ] C) Copial el folder a otro directorio
 
-6. ¿Qué es el stage o el escenario?
+6. ¿Qué es el `staged` o el escenario?
 
     - [ ] A) Un lugar donde se muestra toda la información del commit
 
@@ -403,7 +405,7 @@ Siga las instrucciones indicadas.
 
 4. 
 
-* Agregue el `README.md` al stage o escenario
+* Agregue el `README.md` al `staged` o escenario
 * Realice el primer commit con el mensaje `Creación del readme`
 
 5. 
@@ -412,7 +414,7 @@ Siga las instrucciones indicadas.
 * Dentro de la carpeta logs, cree un archivo llamado `hoy.log`
 * Crear otro archivo llamado `historia.log`
 
-6. Agregue únicamente el archivo `hoy.log` al stage
+6. Agregue únicamente el archivo `hoy.log` al `staged`
 
 7. Realice el segundo commit con el archivo `hoy.log`, y en el mensaje coloque "Creamos el archivo hoy.log"
 
@@ -423,7 +425,7 @@ Siga las instrucciones indicadas.
 
 9. 
 
-* Agregue al stage el archivo `.gitignore`
+* Agregue al `staged` el archivo `.gitignore`
 * Realice un commit unicamente con el archivo .gitignore
 
 10. 
