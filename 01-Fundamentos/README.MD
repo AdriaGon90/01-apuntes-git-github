@@ -14,7 +14,7 @@ Para entender cómo funciona `git` debemos comprender algunos conceptos básicos
 
 * ***Log***: Historial de `commit` realizados en el repositorio.
 
-Desde terminal de `git`, introduciremos el primer comando para visualizar la versión de git con la que nos encontramos trabajando:
+Desde la terminal de `git`, introduciremos el primer comando para visualizar la versión de git con la que nos encontramos trabajando:
 
 > git --version
 
