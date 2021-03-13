@@ -14,6 +14,8 @@ Para entender cómo funciona `git` debemos comprender algunos conceptos básicos
 
 * ***Log***: Historial de `commit` realizados en el repositorio.
 
+* ***Hash del commit***: es el número o identificador del `commit`, cada vez que se crea un `commit` nuevo se le asigna un *hash* nuevo. El *hash* lo podemos obtener a través del `log`.
+
 Desde la terminal de `git`, introduciremos el primer comando para visualizar la versión de git con la que nos encontramos trabajando:
 
 > git --version
@@ -87,7 +89,15 @@ Para visualizar toda la historia de los `commit` registrados en el repositorio, 
 
 > git log
 
-Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo.
+Este comando nos enlista los `commit` desde el mas reciente hasta el mas antiguo. Con este comando podemos obtener el *hash*, que son los números que acompañan a la leyenda `commit`:
+
+    commit 3185e1842db6636e59bebdbafb9d13b59446aeca
+    Author: your name <your.email@domain.com>
+    Date:   Wed Mar 10 18:22:18 2021 -0600
+
+        Your message
+
+
 
 ### COMANDOS ADICIONALES
 
@@ -280,6 +290,10 @@ Si deseamos resturar los cambios efectuados en un archivo en específico al últ
 
 > git checkout -- `path/file.ext`
 
+Si deseamos restaurar un archivo en específico de un `commit` en particular:
+
+> git checkout `hash` `path/filename.ext`
+
 ## ACTUALIZAR MENSAJE DEL `COMMIT` Y REVERTIR `COMMIT`
 
 Si deseamos cambiar el mensaje del último `commit` ejecutado, tecleamos el comando:
@@ -324,25 +338,25 @@ Para agregar un mensaje en el `commit` de múltiples líneas realizamos lo sigui
 
     > git log --oneline --decorate --all --graph
 
-2. Obtenemos el id del `commit` al que deseamos regresar
+2. Obtenemos el *hash* del `commit` al que deseamos regresar
 
 3. Ejecutamos el comando:
 
-    > git reset --soft `idcommit`
+    > git reset --soft `hash`
 
     ó
     
-    > git reset --mixed `idcommit`
+    > git reset --mixed `hash`
 
     Esto nos regresará a un `commit` en específico, pero los cambios realizados en los `commit` superiores no se perderán, simplemente que los archivos cambiados ya no estarán en el `staged`.
 
     Si queremos definir este `commit` en el que nos posicionamos sea el nuevo `HEAD`, descartando todos los cambios que sucedieron en los `commit` superiores, ejecutamos el comando:
 
-    > git reset --hard `idcommit`
+    > git reset --hard `hash`
 
     *NOTA IMPORTANTE*: este comando nos borrará todos los cambios que sucedieron de este `commit` para arriba.
 
-    Si deseamos regresar a un `commit` que se encontraba despues del `commit` del que regresamos, debemos obtener el id del `commit` al que deseamos regresar, ya que no lo visualizaremos en el `log`, para ello ejecutamos el comando:
+    Si deseamos regresar a un `commit` que se encontraba despues del `commit` del que regresamos, debemos obtener el *hash* del `commit` al que deseamos regresar, ya que no lo visualizaremos en el `log`, para ello ejecutamos el comando:
 
     > git reflog
 
